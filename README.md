@@ -6,7 +6,7 @@ Automação completa de enriquecimento de endereços de Leads no Salesforce util
 
 ---
 
-## 📖 Visão Geral
+##  Visão Geral
 
 Equipes comerciais normalmente armazenam endereços apenas como texto dentro do CRM.
 
@@ -21,15 +21,15 @@ Este projeto resolve o problema criando um **pipeline automático de geocodifica
 
 Sempre que um Lead é criado ou atualizado:
 
-👉 o endereço é enviado automaticamente para a API do Google
+ o endereço é enviado automaticamente para a API do Google
 
-👉 latitude e longitude são calculadas
+ latitude e longitude são calculadas
 
-👉 o Lead é enriquecido automaticamente.
+ o Lead é enriquecido automaticamente.
 
 ---
 
-## 🎯 Problema
+##  Problema
 
 Leads armazenavam apenas:
 
@@ -46,7 +46,7 @@ Sem coordenadas geográficas não era possível:
 
 ---
 
-## 🧠 Solução
+##  Solução
 
 Arquitetura baseada em processamento assíncrono:
 
@@ -64,7 +64,7 @@ Atualização automática do Lead
 
 ---
 
-## 🏗️ Arquitetura Técnica
+##  Arquitetura Técnica
 
 ```
 
@@ -74,9 +74,9 @@ Atualização automática do Lead
 
 ---
 
-## ⚙️ Componentes da Solução
+##  Componentes da Solução
 
-### 🔹 Apex Trigger — `LeadGeocodeTrigger`
+###  Apex Trigger — `LeadGeocodeTrigger`
 
 Responsável por:
 
@@ -84,11 +84,11 @@ Responsável por:
 - evitar processamento desnecessário
 - enviar registros para processamento assíncrono
 
-✅ Bulk-safe
+ Bulk-safe
 
 ---
 
-### 🔹 Queueable Apex — `LeadGeocodeQueueable`
+###  Queueable Apex — `LeadGeocodeQueueable`
 
 Executa:
 
@@ -104,7 +104,7 @@ Motivo da escolha:
 
 ---
 
-### 🔹 Service Layer — `GoogleGeocodeService`
+###  Service Layer — `GoogleGeocodeService`
 
 Camada responsável por:
 
@@ -116,7 +116,7 @@ Arquitetura desacoplada.
 
 ---
 
-### 🔹 Custom Metadata — Configuração Dinâmica
+###  Custom Metadata — Configuração Dinâmica
 
 ```
 Google_Settings__mdt
@@ -127,11 +127,11 @@ Campos:
 - `IsEnabled__c` → liga/desliga integração
 - `ApiKey__c` → chave da API Google
 
-✅ Nenhuma credencial hardcoded.
+ Nenhuma credencial hardcoded.
 
 ---
 
-### 🔹 Named Credential
+###  Named Credential
 
 Endpoint seguro:
 
@@ -148,7 +148,7 @@ Benefícios:
 
 ---
 
-## 🧪 Estratégia de Testes
+##  Estratégia de Testes
 
 Utiliza:
 
@@ -173,13 +173,13 @@ Simulação da resposta da API Google:
 }
 ```
 
-✅ testes determinísticos
+ testes determinísticos
 
-✅ compatível com deploy Salesforce
+ compatível com deploy Salesforce
 
 ---
 
-## 🎬 Demonstração
+##  Demonstração
 
 ### Execução Assíncrona (Apex Jobs)
 
@@ -191,12 +191,9 @@ Simulação da resposta da API Google:
 
 
 
-
-
-
 ---
 
-## 📸 Evidências do Projeto
+##  Evidências do Projeto
 
 - Queueable executado com sucesso
 - Integração ativa via Custom Metadata
@@ -205,7 +202,7 @@ Simulação da resposta da API Google:
 
 ---
 
-## 🧩 Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 - Salesforce Apex
 - Queueable Apex
@@ -217,7 +214,7 @@ Simulação da resposta da API Google:
 
 ---
 
-## 🚀 Aprendizados Técnicos
+##  Aprendizados Técnicos
 
 - Arquitetura assíncrona em Salesforce
 - Respeito a Governor Limits
@@ -227,7 +224,7 @@ Simulação da resposta da API Google:
 
 ---
 
-## 📈 Melhorias Futuras
+##  Melhorias Futuras
 
 - Retry automático
 - Batch Geocoding
@@ -236,7 +233,7 @@ Simulação da resposta da API Google:
 
 ---
 
-## 👨‍💻 Autor
+##  Autor
 
 **Alisson Machado**
 
